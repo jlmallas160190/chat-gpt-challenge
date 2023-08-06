@@ -1,7 +1,7 @@
+import { ReactNode } from 'react';
 
-export interface IButton{
-   className: string;
-    text: string;
-    svgIcon: string|undefined;
-    handleChange():unknown;
-}
+export type ButtonProps = {
+  className?: string;
+  children?: ReactNode;
+  handleChange?(): void;
+};

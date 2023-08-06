@@ -1,11 +1,10 @@
-import { IButton } from "./Button.types";
+import { ButtonProps } from './Button.types';
 
-const Button = (props: IButton) => {
-  const { className, svgIcon, text, handleChange } = props;
+const Button = (props: ButtonProps) => {
+  const { className, children, handleChange } = props;
   return (
     <button className={className} onClick={handleChange}>
-      <img src={svgIcon} />
-      {text}
+      {children}
     </button>
   );
 };

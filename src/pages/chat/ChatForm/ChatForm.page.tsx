@@ -1,9 +1,6 @@
-import ChatFormTemplate from "@/components/template/ChatForm/ChatForm.component";
+import ChatFormTemplate from '@/components/template/ChatFormTemplate/ChatFormTemplate.component';
 
-const ChatForm=()=> {
-    return (
-      <ChatFormTemplate></ChatFormTemplate>
-    );
-  }
-  export default ChatForm;
-  
+const ChatForm = () => {
+  return <ChatFormTemplate></ChatFormTemplate>;
+};
+export default ChatForm;
