@@ -1,4 +1,4 @@
-import { IChatFormValues } from '@/components/organisms/ChatInput/ChatInput.types';
+import { IChatFormValues } from '@/components/organisms/ChatCompletetionForm/ChatCompletetionForm.types';
 import { IChatCompletion } from '@/domain/models/chatCompletion.model';
 import { sendChat } from '@/domain/services/chatCompletetion/chatCompletetion.service';
 import { IChatCompletetionPayload } from '@/domain/services/chatCompletetion/chatCompletetion.types';
@@ -22,10 +22,7 @@ const useSendChat = () => {
     setLoading(true);
     const body: IChatCompletetionPayload = {
       model: 'gpt-3.5-turbo',
-      messages: [
-        { role: 'system', content: 'odamachat' },
-        { role: 'user', content: values.content },
-      ],
+      messages: [{ role: 'user', content: values.content }],
     };
     const response = await sendChat(body);
     setResponse(response);

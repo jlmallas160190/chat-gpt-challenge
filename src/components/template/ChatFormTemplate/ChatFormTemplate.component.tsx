@@ -1,14 +1,23 @@
 import Button from '@/components/atoms/Button/Button.component';
 import Typography from '@/components/atoms/Typography/Typography.component';
 import PlusCircleIcon from '@/assets/icons/commons/icon-plus.svg';
-import ChatInput from '@/components/organisms/ChatInput/ChatInput.component';
+import ChatCompletetionForm from '@/components/organisms/ChatCompletetionForm/ChatCompletionForm.component';
 import useSendChat from '@/hooks/chat/useSendChat';
+import ChatCompletetionList from '@/components/organisms/ChatCompletetionList/ChatCompletetionList.component';
+import { IChatCompletionMessage } from '@/components/organisms/ChatCompletetionList/ChatCompletetionList.types';
 
 const ChatFormTemplate = () => {
   const { onSubmit, loading, response } = useSendChat();
+  const messages: IChatCompletionMessage[] =
+    response && response.choices && response.choices.length > 0
+      ? response.choices.map(({ message }) => ({
+          ...message,
+          createdAt: response.created,
+        }))
+      : [];
   return (
     <div className="flex p-4">
-      <div className="p-4 flex flex-row justify-start w-3/12"></div>
+      {/* <div className="p-4 flex flex-row justify-start w-3/12"></div> */}
       <div
         className="flex flex-wrap  bg-slate-50 rounded-lg border
        border-solid border-gray-300  w-9/12  content-between h-[600px] grow"
@@ -26,22 +35,15 @@ const ChatFormTemplate = () => {
               {'Nueva Búsqueda'}
             </Button>
           </div>
-          <div className="flex flex-col  justify-center w-full items-center">
-            <h1>Paos aqui jeje</h1>
-            {response && (
-              <Typography className="">
-                {response.choices && response.choices.length > 0
-                  ? response.choices[0].message.content
-                  : ''}
-              </Typography>
-            )}
-          </div>
         </header>
+        <div className="flex flex-col justify-center w-full items-center">
+          {response.choices && <ChatCompletetionList messages={messages} />}
+        </div>
         <footer
-          className="flex flex-col p-4 border w-full boder-solid border-[#cbd5e1] h-[99px]
+          className="flex flex-col p-4 border w-full border-solid border-[#cbd5e1] h-[99px]
          justify-center items-center w-full bg-white "
         >
-          <ChatInput loading={loading} onSubmit={onSubmit} />
+          <ChatCompletetionForm loading={loading} onSubmit={onSubmit} />
         </footer>
       </div>
     </div>

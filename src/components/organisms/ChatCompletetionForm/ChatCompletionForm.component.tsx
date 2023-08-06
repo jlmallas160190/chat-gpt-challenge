@@ -4,9 +4,9 @@ import SendIcon from '@/assets/icons/commons/send.svg';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { chatFormSchema } from '@/schemas/chat/chatSendSchema';
-import { ChatInputProps, IChatFormValues } from './ChatInput.types';
+import { ChatCompletionFormProps, IChatFormValues } from './ChatCompletetionForm.types';
 
-const ChatInput = ({ onSubmit, loading }: ChatInputProps) => {
+const ChatCompletetionForm = ({ onSubmit, loading }: ChatCompletionFormProps) => {
   const { handleSubmit, control } = useForm<IChatFormValues>({
     shouldUnregister: false,
     resolver: yupResolver(chatFormSchema),
@@ -43,4 +43,4 @@ const ChatInput = ({ onSubmit, loading }: ChatInputProps) => {
     </div>
   );
 };
-export default ChatInput;
+export default ChatCompletetionForm;
