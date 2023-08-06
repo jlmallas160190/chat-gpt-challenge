@@ -2,8 +2,10 @@ import Button from '@/components/atoms/Button/Button.component';
 import Typography from '@/components/atoms/Typography/Typography.component';
 import PlusCircleIcon from '@/assets/icons/commons/icon-plus.svg';
 import ChatInput from '@/components/organisms/ChatInput/ChatInput.component';
+import useSendChat from '@/hooks/chat/useSendChat';
 
 const ChatFormTemplate = () => {
+  const { onSubmit, loading, response } = useSendChat();
   return (
     <div className="flex p-4">
       <div className="p-4 flex flex-row justify-start w-3/12"></div>
@@ -16,7 +18,7 @@ const ChatFormTemplate = () => {
         rounded-lg bg-white"
         >
           <div className="flex justify-start w-full">
-            <Typography className="text-base font-semibold" text="OdamaChat"></Typography>
+            <Typography className="text-base font-semibold">{'OdamaChat'}</Typography>
           </div>
           <div className="flex justify-end w-full">
             <Button className="bg-aluxion-primary text-white flex flex-row p-2 h-[39px] items-center gap-2.5 rounded-md">
@@ -24,12 +26,22 @@ const ChatFormTemplate = () => {
               {'Nueva Búsqueda'}
             </Button>
           </div>
+          <div className="flex flex-col  justify-center w-full items-center">
+            <h1>Paos aqui jeje</h1>
+            {response && (
+              <Typography className="">
+                {response.choices && response.choices.length > 0
+                  ? response.choices[0].message.content
+                  : ''}
+              </Typography>
+            )}
+          </div>
         </header>
         <footer
           className="flex flex-col p-4 border w-full boder-solid border-[#cbd5e1] h-[99px]
          justify-center items-center w-full bg-white "
         >
-          <ChatInput />
+          <ChatInput loading={loading} onSubmit={onSubmit} />
         </footer>
       </div>
     </div>

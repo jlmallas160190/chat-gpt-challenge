@@ -1,5 +1,6 @@
+import { ReactNode } from 'react';
 
 export interface ITypography {
-    className: string;
-    text: string;
+  className: string;
+  children: ReactNode;
 }

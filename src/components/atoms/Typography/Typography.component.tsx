@@ -1,11 +1,7 @@
-import { ITypography } from "./Typography.types";
+import { ITypography } from './Typography.types';
 
 const Typography = (props: ITypography) => {
-  const { className,text } = props;
-  return (
-    <p className={className}>
-      {text}
-    </p>
-  );
+  const { className, children } = props;
+  return <p className={className}>{children}</p>;
 };
 export default Typography;

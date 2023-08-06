@@ -3,12 +3,10 @@ import InputText from '@/components/atoms/Inputs/InputText/InputText.component';
 import SendIcon from '@/assets/icons/commons/send.svg';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import useSendChat from '@/hooks/chat/useSendChat';
 import { chatFormSchema } from '@/schemas/chat/chatSendSchema';
-import { IChatFormValues } from './ChatInput.types';
+import { ChatInputProps, IChatFormValues } from './ChatInput.types';
 
-const ChatInput = () => {
-  const { onSubmit } = useSendChat();
+const ChatInput = ({ onSubmit, loading }: ChatInputProps) => {
   const { handleSubmit, control } = useForm<IChatFormValues>({
     shouldUnregister: false,
     resolver: yupResolver(chatFormSchema),
@@ -25,11 +23,22 @@ const ChatInput = () => {
     >
       <InputText
         control={control}
-        className="text-base font-medium w-full outline-0 leading-6"
+        className="text-base font-medium w-full outline-0 leading-6 disabled:opacity-75"
         name="content"
+        disabled={loading}
       />
-      <Button handleChange={handleSubmit(onSubmit)}>
-        <img src={SendIcon} />
+      <Button disabled={loading} handleChange={handleSubmit(onSubmit)}>
+        {loading ? (
+          <div
+            className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-gray-400 rounded-full"
+            role="status"
+            aria-label="loading"
+          >
+            <span className="sr-only">Loading...</span>
+          </div>
+        ) : (
+          <img src={SendIcon} />
+        )}
       </Button>
     </div>
   );

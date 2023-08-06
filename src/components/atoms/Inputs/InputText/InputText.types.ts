@@ -8,4 +8,5 @@ export interface InputTextProps {
   ref?: string;
   control?: Control;
   required?: boolean;
+  disabled?: boolean;
 }

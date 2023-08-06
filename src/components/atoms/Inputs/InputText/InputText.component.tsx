@@ -2,7 +2,7 @@ import { Controller } from 'react-hook-form';
 import { InputTextProps } from './InputText.types';
 
 const InputText = (props: InputTextProps) => {
-  const { className, placeholder, inputType, control, ref, name, required } = props;
+  const { className, placeholder, inputType, control, ref, name, required, disabled } = props;
   return (
     <Controller
       control={control}
@@ -14,6 +14,7 @@ const InputText = (props: InputTextProps) => {
           onChange={onChange}
           className={className}
           ref={ref}
+          disabled={disabled}
           type={inputType}
           onBlur={onBlur}
           placeholder={placeholder}

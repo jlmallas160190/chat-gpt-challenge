@@ -1,9 +1,9 @@
 import { ButtonProps } from './Button.types';
 
 const Button = (props: ButtonProps) => {
-  const { className, children, handleChange } = props;
+  const { className, children, handleChange, disabled } = props;
   return (
-    <button className={className} onClick={handleChange}>
+    <button disabled={disabled} className={className} onClick={handleChange}>
       {children}
     </button>
   );
