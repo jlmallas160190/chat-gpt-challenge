@@ -18,7 +18,7 @@ function MainLayout() {
   const { chatHistories } = useContext(ChatHistoryContext);
   return (
     <div className="flex flex-col">
-      <div className=" flex h-[93px] bg-[#F97316] w-full items-center  shadow-base">
+      <div className=" flex h-[93px] bg-[#F97316] w-full items-center shadow-base">
         <div className="flex w-full justify-start">
           <button className="flex m-2 justify-center items-center text-white text-base border-[1.5px] p-2.5 border-solid border-white w-[94px] h-[45px]">
             <img src={BackIcon} />
@@ -38,17 +38,19 @@ function MainLayout() {
           </button>
         </div>
       </div>
-      <div className="flex p-4 bg-[#F8FAFC]">
+      <div className="flex mobile:flex-col  mobile:items-center  mobile:gap-2 p-4 bg-[#F8FAFC]">
         <div
-          className={`px-4 flex flex-col justify-start items-center 
-       data-te-collapse-item transition-all ${hidden ? 'collapse w-0 ' : 'visible w-3/12'}`}
+          className={`px-4 flex flex-col justify-start items-center mobile:w-full
+       data-te-collapse-item transition-all ${
+         hidden ? 'collapse w-0 ' : 'visible w-3/12 mobile:h-full  mobile:w-full'
+       }`}
         >
           <ChatHistorySearch></ChatHistorySearch>
           <ChatHistoryList chatHistories={chatHistories}></ChatHistoryList>
         </div>
         <div
-          className={`flex flex-wrap  bg-slate-50 rounded-lg border  ${
-            hidden ? 'w-full' : 'w-9/12 '
+          className={`flex flex-wrap grow bg-slate-50 rounded-lg border mobile:w-full ${
+            hidden ? 'w-full' : 'w-9/12  mobile:w-full'
           }
        border-solid border-gray-300  content-between min-h-[600px] grow`}
         >

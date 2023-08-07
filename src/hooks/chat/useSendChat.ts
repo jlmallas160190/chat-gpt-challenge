@@ -12,16 +12,27 @@ const useSendChat = () => {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(true);
   const [conversations, setConversations] = useState<IConversation[]>([]);
-  const { chatHistories, setChatHistories, setIndex, index } = useContext(ChatHistoryContext);
+  const {
+    chatHistories,
+    setChatHistories,
+    setIndex,
+    index,
+    chatHistorySelected,
+    onSelectChatHistory,
+  } = useContext(ChatHistoryContext);
 
   useEffect(() => {
     if (mounted) {
       setMounted(true);
+
+      if (chatHistorySelected && chatHistorySelected.conversations) {
+        setConversations(chatHistorySelected.conversations);
+      }
     }
     return () => {
       setMounted(false);
     };
-  }, [mounted]);
+  }, [mounted, chatHistorySelected]);
 
   const onResetConversation = () => {
     setConversations([]);
@@ -67,14 +78,16 @@ const useSendChat = () => {
       const titles = messages ? messages.map(({ user }) => user.content) : '';
       const title = titles && titles.length > 0 ? titles[0] : '';
       const chatHistoryNew: IChatHistory = {
+        id: response.id,
         title,
-        createdAt: moment().startOf('day').fromNow(),
+        createdAt: moment().local().startOf('day').fromNow(),
         conversations: messages,
       };
+      onSelectChatHistory(chatHistoryNew);
       setChatHistories([...chatHistories, chatHistoryNew]);
     }
     setLoading(false);
   };
-  return { loading, onSubmit, onResetConversation, conversations };
+  return { loading, onSubmit, onResetConversation, conversations, setConversations };
 };
 export default useSendChat;

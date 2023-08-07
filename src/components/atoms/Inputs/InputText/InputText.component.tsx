@@ -7,7 +7,7 @@ const InputText = (props: IInputTextProps) => {
   return (
     <Controller
       control={control}
-      defaultValue=""
+      defaultValue="ssss"
       name={name}
       rules={{ required }}
       render={({ field: { onChange, onBlur, value } }) => (

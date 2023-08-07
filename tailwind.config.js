@@ -3,6 +3,9 @@ export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      screens: {
+        mobile: { max: "500px" },
+      },
       boxShadow: {
         base: "0px 0px 6px 0px rgba(46, 58, 90, 0.13)",
       },
