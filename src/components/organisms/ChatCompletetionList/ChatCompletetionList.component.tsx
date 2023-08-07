@@ -1,5 +1,6 @@
-import ChatCompletetionItem from '@/components/molecules/ChatCompletetionItem/ChatCompletetionItem.component';
 import { IChatCompletetionListProps } from './ChatCompletetionList.types';
+
+import ChatCompletetionItem from '@/components/molecules/ChatCompletetionItem/ChatCompletetionItem.component';
 
 const ChatCompletetionList = ({ conversations }: IChatCompletetionListProps) => {
   return (

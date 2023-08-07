@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+
 import { createAxios } from './axiosInstance';
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 

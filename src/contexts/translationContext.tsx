@@ -1,7 +1,8 @@
-import English from '@/i18n/en-US.json';
-import Spanish from '@/i18n/es-AR.json';
 import { useState, createContext, ReactNode } from 'react';
 import { IntlProvider } from 'react-intl';
+
+import English from '@/i18n/en-US.json';
+import Spanish from '@/i18n/es-AR.json';
 
 interface ITranslationContext {
   locale: string;

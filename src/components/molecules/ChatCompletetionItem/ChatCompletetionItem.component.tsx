@@ -1,5 +1,6 @@
-import Typography from '@/components/atoms/Typography/Typography.component';
 import { IChatCompletetionItemProps } from './ChatCompletetionItem.types';
+
+import Typography from '@/components/atoms/Typography/Typography.component';
 
 const ChatCompletetionItem = ({ message, roleType }: IChatCompletetionItemProps) => {
   const { role, createdAt, content } = message;

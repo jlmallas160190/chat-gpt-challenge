@@ -1,11 +1,12 @@
+import { FormattedMessage, useIntl } from 'react-intl';
+
+import PlusCircleIcon from '@/assets/icons/commons/icon-plus.svg';
 import Button from '@/components/atoms/Button/Button.component';
 import Typography from '@/components/atoms/Typography/Typography.component';
-import PlusCircleIcon from '@/assets/icons/commons/icon-plus.svg';
-import ChatCompletetionForm from '@/components/organisms/ChatCompletetionForm/ChatCompletionForm.component';
-import useSendChat from '@/hooks/chat/useSendChat';
-import ChatCompletetionList from '@/components/organisms/ChatCompletetionList/ChatCompletetionList.component';
-import { FormattedMessage, useIntl } from 'react-intl';
 import ChatHistorySearch from '@/components/molecules/ChatHistorySearch/ChatHistorySearch.component';
+import ChatCompletetionForm from '@/components/organisms/ChatCompletetionForm/ChatCompletionForm.component';
+import ChatCompletetionList from '@/components/organisms/ChatCompletetionList/ChatCompletetionList.component';
+import useSendChat from '@/hooks/chat/useSendChat';
 
 const ChatFormTemplate = () => {
   const { onSubmit, loading, conversations, onResetConversation } = useSendChat();

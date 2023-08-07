@@ -1,11 +1,11 @@
-import BaseRoutes from "@/routes/Routes";
-import BackIcon from "@/assets/icons/commons/back.svg";
-import SettingsIcon from "@/assets/icons/commons/setting.svg";
-import SideBarIcon from "@/assets/icons/commons/sidebar.svg";
-import { IRoute } from "@/routes/Routes.types";
-import ChatForm from "@/pages/chat/ChatForm/ChatForm.page";
+import BackIcon from '@/assets/icons/commons/back.svg';
+import SettingsIcon from '@/assets/icons/commons/setting.svg';
+import SideBarIcon from '@/assets/icons/commons/sidebar.svg';
+import ChatForm from '@/pages/chat/ChatForm/ChatForm.page';
+import BaseRoutes from '@/routes/Routes';
+import { IRoute } from '@/routes/Routes.types';
 
-const routes: IRoute[] = [{ path: "", element: <ChatForm />, order: 1 }];
+const routes: IRoute[] = [{ path: '', element: <ChatForm />, order: 1 }];
 
 function MainLayout() {
   return (

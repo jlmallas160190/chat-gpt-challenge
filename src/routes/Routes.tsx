@@ -1,5 +1,6 @@
-import { Route, Routes } from "react-router-dom";
-import { IRoute, IRoutes } from "./Routes.types";
+import { Route, Routes } from 'react-router-dom';
+
+import { IRoute, IRoutes } from './Routes.types';
 
 const BaseRoutes = (props: IRoutes) => {
   const getRoutes = (routes: IRoute[]) =>

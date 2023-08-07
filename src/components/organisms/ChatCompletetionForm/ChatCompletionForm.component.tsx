@@ -1,11 +1,13 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useCallback, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+
+import { ChatCompletionFormProps, IChatFormValues } from './ChatCompletetionForm.types';
+
+import SendIcon from '@/assets/icons/commons/send.svg';
 import Button from '@/components/atoms/Button/Button.component';
 import InputText from '@/components/atoms/Inputs/InputText/InputText.component';
-import SendIcon from '@/assets/icons/commons/send.svg';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { chatFormSchema } from '@/schemas/chat/chatSendSchema';
-import { ChatCompletionFormProps, IChatFormValues } from './ChatCompletetionForm.types';
-import { useCallback, useEffect } from 'react';
 
 const ChatCompletetionForm = ({ onSubmit, loading }: ChatCompletionFormProps) => {
   const { handleSubmit, control, reset } = useForm<IChatFormValues>({

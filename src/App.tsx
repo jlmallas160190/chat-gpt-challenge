@@ -1,9 +1,10 @@
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import MainLayout from "./layouts/MainLayout/MainLayout.component";
+import { Route, Routes } from 'react-router-dom';
+
+import './App.css';
+import MainLayout from './layouts/MainLayout/MainLayout.component';
 const App = () => (
   <Routes>
-   <Route path="/" element={<MainLayout/>} />
+    <Route path="/" element={<MainLayout />} />
   </Routes>
 );
 

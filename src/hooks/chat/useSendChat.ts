@@ -1,9 +1,10 @@
+import { useEffect, useState } from 'react';
+
 import { IChatFormValues } from '@/components/organisms/ChatCompletetionForm/ChatCompletetionForm.types';
 import { sendChat } from '@/domain/services/chatCompletetion/chatCompletetion.service';
 import { IChatCompletetionPayload } from '@/domain/services/chatCompletetion/chatCompletetion.types';
 import { IConversation } from '@/types/chatCompletetion.types';
 import { timeFormat } from '@/utils/formatters/times';
-import { useEffect, useState } from 'react';
 
 const useSendChat = () => {
   const [loading, setLoading] = useState(false);

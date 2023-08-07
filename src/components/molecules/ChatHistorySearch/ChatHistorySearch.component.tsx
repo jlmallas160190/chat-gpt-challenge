@@ -1,12 +1,12 @@
-import SendIcon from '@/assets/icons/commons/send.svg';
-import { chatSearchSchema } from '@/schemas/chat/chatSearchSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
+import SendIcon from '@/assets/icons/commons/send.svg';
 import Button from '@/components/atoms/Button/Button.component';
 import InputText from '@/components/atoms/Inputs/InputText/InputText.component';
 import Typography from '@/components/atoms/Typography/Typography.component';
+import { chatSearchSchema } from '@/schemas/chat/chatSearchSchema';
 
 const ChatHistorySearch = () => {
   const { formatMessage } = useIntl();
