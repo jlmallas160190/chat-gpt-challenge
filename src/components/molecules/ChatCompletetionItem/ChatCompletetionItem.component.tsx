@@ -1,8 +1,7 @@
 import Typography from '@/components/atoms/Typography/Typography.component';
-import { ChatCompletetionItemProps } from './ChatCompletetionItem.types';
+import { IChatCompletetionItemProps } from './ChatCompletetionItem.types';
 
-const ChatCompletetionItem = ({ message, roleType }: ChatCompletetionItemProps) => {
-  console.log(message);
+const ChatCompletetionItem = ({ message, roleType }: IChatCompletetionItemProps) => {
   const { role, createdAt, content } = message;
   return (
     <div
@@ -15,7 +14,6 @@ const ChatCompletetionItem = ({ message, roleType }: ChatCompletetionItemProps) 
             roleType === 'user' ? 'text-[#10B981]' : 'text-aluxion-primary'
           }`}
         >
-          {' '}
           {role}
         </Typography>
         <Typography className="text-justify"> {createdAt}</Typography>

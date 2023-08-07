@@ -4,23 +4,29 @@ import PlusCircleIcon from '@/assets/icons/commons/icon-plus.svg';
 import ChatCompletetionForm from '@/components/organisms/ChatCompletetionForm/ChatCompletionForm.component';
 import useSendChat from '@/hooks/chat/useSendChat';
 import ChatCompletetionList from '@/components/organisms/ChatCompletetionList/ChatCompletetionList.component';
+import { FormattedMessage, useIntl } from 'react-intl';
+import ChatHistorySearch from '@/components/molecules/ChatHistorySearch/ChatHistorySearch.component';
 
 const ChatFormTemplate = () => {
   const { onSubmit, loading, conversations, onResetConversation } = useSendChat();
-
+  const { formatMessage } = useIntl();
   return (
-    <div className="flex p-4">
-      {/* <div className="p-4 flex flex-row justify-start w-3/12"></div> */}
+    <div className="flex p-4 bg-[#F8FAFC]">
+      <div className="px-4 flex flex-row justify-start w-3/12">
+        <ChatHistorySearch></ChatHistorySearch>
+      </div>
       <div
         className="flex flex-wrap  bg-slate-50 rounded-lg border
-       border-solid border-gray-300  w-9/12  content-between h-[600px] grow"
+       border-solid border-gray-300  w-9/12  content-between min-h-[600px] grow"
       >
         <header
           className="flex p-4 flex-row justify-start items-center h-[64px] w-full 
         rounded-lg bg-white"
         >
           <div className="flex justify-start w-full">
-            <Typography className="text-base font-semibold">{'OdamaChat'}</Typography>
+            <Typography className="text-base font-semibold">
+              {formatMessage({ id: 'assistant.name', defaultMessage: 'OdamaChat' })}
+            </Typography>
           </div>
           <div className="flex justify-end w-full">
             <Button
@@ -29,7 +35,7 @@ const ChatFormTemplate = () => {
               handleClick={onResetConversation}
             >
               <img src={PlusCircleIcon} />
-              {'Nueva Búsqueda'}
+              <FormattedMessage id="chatForm.button.new"></FormattedMessage>
             </Button>
           </div>
         </header>

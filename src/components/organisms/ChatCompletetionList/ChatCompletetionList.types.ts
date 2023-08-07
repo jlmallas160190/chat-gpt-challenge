@@ -1,5 +1,5 @@
 import { IConversation } from '@/types/chatCompletetion.types';
 
-export interface ChatCompletetionListProps {
+export interface IChatCompletetionListProps {
   conversations: IConversation[];
 }

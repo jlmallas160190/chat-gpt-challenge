@@ -1,7 +1,7 @@
 import { Controller } from 'react-hook-form';
-import { InputTextProps } from './InputText.types';
+import { IInputTextProps } from './InputText.types';
 
-const InputText = (props: InputTextProps) => {
+const InputText = (props: IInputTextProps) => {
   const { className, placeholder, inputType, control, ref, name, required, disabled } = props;
   return (
     <Controller

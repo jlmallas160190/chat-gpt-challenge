@@ -10,12 +10,12 @@ const createAxios: AxiosInstance = axios.create({
   },
 });
 
-interface RetryConfig extends AxiosRequestConfig {
+interface IRetryConfig extends AxiosRequestConfig {
   retry: number;
   retryDelay: number;
 }
 
-const globalConfig: RetryConfig = {
+const globalConfig: IRetryConfig = {
   retry: 3,
   retryDelay: 1000,
 };

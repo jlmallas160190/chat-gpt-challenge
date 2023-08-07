@@ -1,6 +1,6 @@
 import { Control } from 'react-hook-form';
 
-export interface InputTextProps {
+export interface IInputTextProps {
   className?: string;
   name: string;
   placeholder?: string;
