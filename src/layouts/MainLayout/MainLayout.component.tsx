@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import BackIcon from '@/assets/icons/commons/back.svg';
 import SettingsIcon from '@/assets/icons/commons/setting.svg';
 import SideBarIcon from '@/assets/icons/commons/sidebar.svg';
 import Button from '@/components/atoms/Button/Button.component';
 import ChatHistorySearch from '@/components/molecules/ChatHistorySearch/ChatHistorySearch.component';
+import ChatHistoryList from '@/components/organisms/ChatHistoryList/ChatHistoryList.component';
+import { ChatHistoryContext } from '@/contexts/chatHistoryContext';
 import ChatForm from '@/pages/chat/ChatForm/ChatForm.page';
 import BaseRoutes from '@/routes/Routes';
 import { IRoute } from '@/routes/Routes.types';
@@ -13,6 +15,7 @@ const routes: IRoute[] = [{ path: '', element: <ChatForm />, order: 1 }];
 
 function MainLayout() {
   const [hidden, setHidden] = useState(false);
+  const { chatHistories } = useContext(ChatHistoryContext);
   return (
     <div className="flex flex-col">
       <div className=" flex h-[93px] bg-[#F97316] w-full items-center  shadow-base">
@@ -37,10 +40,11 @@ function MainLayout() {
       </div>
       <div className="flex p-4 bg-[#F8FAFC]">
         <div
-          className={`px-4 flex flex-row justify-start 
+          className={`px-4 flex flex-col justify-start items-center 
        data-te-collapse-item transition-all ${hidden ? 'collapse w-0 ' : 'visible w-3/12'}`}
         >
           <ChatHistorySearch></ChatHistorySearch>
+          <ChatHistoryList chatHistories={chatHistories}></ChatHistoryList>
         </div>
         <div
           className={`flex flex-wrap  bg-slate-50 rounded-lg border  ${

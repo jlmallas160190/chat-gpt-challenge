@@ -10,7 +10,7 @@ export interface IConversation {
 }
 
 export interface IChatHistory {
-  title: string;
-  createdAt: string;
-  conversation: IConversation;
+  title?: string;
+  createdAt?: string;
+  conversations?: IConversation[];
 }

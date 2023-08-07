@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import moment from 'moment';
+import { useContext, useEffect, useState } from 'react';
 
 import { IChatFormValues } from '@/components/organisms/ChatCompletetionForm/ChatCompletetionForm.types';
+import { ChatHistoryContext } from '@/contexts/chatHistoryContext';
 import { sendChat } from '@/domain/services/chatCompletetion/chatCompletetion.service';
 import { IChatCompletetionPayload } from '@/domain/services/chatCompletetion/chatCompletetion.types';
-import { IConversation } from '@/types/chatCompletetion.types';
+import { IChatHistory, IConversation } from '@/types/chatCompletetion.types';
 import { timeFormat } from '@/utils/formatters/times';
 
 const useSendChat = () => {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(true);
   const [conversations, setConversations] = useState<IConversation[]>([]);
+  const { chatHistories, setChatHistories, setIndex, index } = useContext(ChatHistoryContext);
 
   useEffect(() => {
     if (mounted) {
@@ -22,6 +25,9 @@ const useSendChat = () => {
 
   const onResetConversation = () => {
     setConversations([]);
+    if (chatHistories && chatHistories.length > 0) {
+      setIndex(index + 1);
+    }
   };
   const onSubmit = async (values: IChatFormValues) => {
     setLoading(true);
@@ -50,6 +56,23 @@ const useSendChat = () => {
           }))
         : [];
     setConversations([...conversations, ...messages]);
+
+    if (chatHistories && chatHistories.length == index + 1) {
+      const chatHistoryEdit = chatHistories[index];
+      const { conversations } = chatHistoryEdit;
+      if (conversations) {
+        conversations.push(...messages);
+      }
+    } else {
+      const titles = messages ? messages.map(({ user }) => user.content) : '';
+      const title = titles && titles.length > 0 ? titles[0] : '';
+      const chatHistoryNew: IChatHistory = {
+        title,
+        createdAt: moment().startOf('day').fromNow(),
+        conversations: messages,
+      };
+      setChatHistories([...chatHistories, chatHistoryNew]);
+    }
     setLoading(false);
   };
   return { loading, onSubmit, onResetConversation, conversations };

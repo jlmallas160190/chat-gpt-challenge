@@ -10,6 +10,7 @@ import { chatSearchSchema } from '@/schemas/chat/chatSearchSchema';
 
 const ChatHistorySearch = () => {
   const { formatMessage } = useIntl();
+
   const { control } = useForm({
     shouldUnregister: false,
     resolver: yupResolver(chatSearchSchema),
