@@ -1,9 +1,5 @@
-export interface IChatCompletionMessage {
-  role: string;
-  content: string;
-  createdAt: string;
-}
+import { IConversation } from '@/types/chatCompletetion.types';
 
 export interface ChatCompletetionListProps {
-  messages: IChatCompletionMessage[];
+  conversations: IConversation[];
 }

@@ -5,9 +5,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { chatFormSchema } from '@/schemas/chat/chatSendSchema';
 import { ChatCompletionFormProps, IChatFormValues } from './ChatCompletetionForm.types';
+import { useCallback, useEffect } from 'react';
 
 const ChatCompletetionForm = ({ onSubmit, loading }: ChatCompletionFormProps) => {
-  const { handleSubmit, control } = useForm<IChatFormValues>({
+  const { handleSubmit, control, reset } = useForm<IChatFormValues>({
     shouldUnregister: false,
     resolver: yupResolver(chatFormSchema),
     mode: 'onSubmit',
@@ -15,6 +16,16 @@ const ChatCompletetionForm = ({ onSubmit, loading }: ChatCompletionFormProps) =>
       content: '',
     },
   });
+
+  const handleReset = useCallback(() => {
+    reset({ content: '' });
+  }, [reset]);
+
+  useEffect(() => {
+    if (loading) {
+      handleReset();
+    }
+  }, [handleReset, loading]);
 
   return (
     <div
@@ -27,7 +38,7 @@ const ChatCompletetionForm = ({ onSubmit, loading }: ChatCompletionFormProps) =>
         name="content"
         disabled={loading}
       />
-      <Button disabled={loading} handleChange={handleSubmit(onSubmit)}>
+      <Button disabled={loading} handleClick={handleSubmit(onSubmit)}>
         {loading ? (
           <div
             className="animate-spin inline-block w-6 h-6 border-[3px] border-current border-t-transparent text-gray-400 rounded-full"

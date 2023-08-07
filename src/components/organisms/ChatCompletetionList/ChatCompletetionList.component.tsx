@@ -1,12 +1,14 @@
 import ChatCompletetionItem from '@/components/molecules/ChatCompletetionItem/ChatCompletetionItem.component';
 import { ChatCompletetionListProps } from './ChatCompletetionList.types';
 
-const ChatCompletetionList = ({ messages }: ChatCompletetionListProps) => {
-  console.log(messages, 'paso2');
+const ChatCompletetionList = ({ conversations }: ChatCompletetionListProps) => {
   return (
-    <div className="flex flex-row  items-center w-full p-4 ">
-      {messages.map(({ content, createdAt, role }, index) => (
-        <ChatCompletetionItem key={index} content={content} createdAt={createdAt} role={role} />
+    <div className="flex flex-col items-center w-full p-4 ">
+      {conversations.map(({ user, assistant }, index) => (
+        <div key={index} className="flex flex-col gap2">
+          <ChatCompletetionItem message={user} roleType="user" />
+          <ChatCompletetionItem message={assistant} roleType="boot" />
+        </div>
       ))}
     </div>
   );

@@ -1,5 +1,6 @@
+import { IMessage } from '@/types/chatCompletetion.types';
+
 export interface ChatCompletetionItemProps {
-  role: string;
-  createdAt: string;
-  content: string;
+  message: IMessage;
+  roleType: 'user' | 'boot';
 }

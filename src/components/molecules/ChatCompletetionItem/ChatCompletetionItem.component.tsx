@@ -1,12 +1,28 @@
+import Typography from '@/components/atoms/Typography/Typography.component';
 import { ChatCompletetionItemProps } from './ChatCompletetionItem.types';
 
-const ChatCompletetionItem = ({ role }: ChatCompletetionItemProps) => {
+const ChatCompletetionItem = ({ message, roleType }: ChatCompletetionItemProps) => {
+  console.log(message);
+  const { role, createdAt, content } = message;
   return (
     <div
-      className="flex flex-row  items-center w-full p-4 
-     gap-2.5 rounded border border-solid bg-white border-slate-300"
+      className="flex flex-col mb-4 w-full p-4 
+     gap-2.5 rounded bg-white"
     >
-      {role}
+      <div className="flex flex-row border-b boder-b-solid w-full gap-4 p-2 border-b-slate-500">
+        <Typography
+          className={`text-justify ${
+            roleType === 'user' ? 'text-[#10B981]' : 'text-aluxion-primary'
+          }`}
+        >
+          {' '}
+          {role}
+        </Typography>
+        <Typography className="text-justify"> {createdAt}</Typography>
+      </div>
+      <div className="flex flex-row mt-2">
+        <Typography className="text-justify"> {content}</Typography>
+      </div>
     </div>
   );
 };

@@ -1,13 +1,14 @@
 import { IChatFormValues } from '@/components/organisms/ChatCompletetionForm/ChatCompletetionForm.types';
-import { IChatCompletion } from '@/domain/models/chatCompletion.model';
 import { sendChat } from '@/domain/services/chatCompletetion/chatCompletetion.service';
 import { IChatCompletetionPayload } from '@/domain/services/chatCompletetion/chatCompletetion.types';
+import { IConversation } from '@/types/chatCompletetion.types';
+import { timeFormat } from '@/utils/formatters/times';
 import { useEffect, useState } from 'react';
 
 const useSendChat = () => {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(true);
-  const [response, setResponse] = useState<IChatCompletion>({});
+  const [conversations, setConversations] = useState<IConversation[]>([]);
 
   useEffect(() => {
     if (mounted) {
@@ -18,6 +19,9 @@ const useSendChat = () => {
     };
   }, [mounted]);
 
+  const onResetConversation = () => {
+    setConversations([]);
+  };
   const onSubmit = async (values: IChatFormValues) => {
     setLoading(true);
     const body: IChatCompletetionPayload = {
@@ -25,9 +29,28 @@ const useSendChat = () => {
       messages: [{ role: 'user', content: values.content }],
     };
     const response = await sendChat(body);
-    setResponse(response);
+
+    const messages: IConversation[] =
+      response && response.choices && response.choices.length > 0
+        ? response.choices.map(({ message }) => ({
+            assistant: {
+              ...message,
+              createdAt: response.created
+                ? timeFormat.format(new Date(response.created * 1000))
+                : '',
+            },
+            user: {
+              role: 'Jorge',
+              content: values.content,
+              createdAt: response.created
+                ? timeFormat.format(new Date(response.created * 1000))
+                : '',
+            },
+          }))
+        : [];
+    setConversations([...conversations, ...messages]);
     setLoading(false);
   };
-  return { loading, onSubmit, response };
+  return { loading, onSubmit, onResetConversation, conversations };
 };
 export default useSendChat;

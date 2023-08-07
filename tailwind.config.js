@@ -10,8 +10,11 @@ export default {
         'aluxion-primary': "#F97316",
       },
       fontFamily: {
-        aluxion: " General Sans",
+        aluxion: "General Sans",
       },
+      colors:{
+        'aluxion-primary':"#F97316"
+      }
     },
   },
   plugins: [],
