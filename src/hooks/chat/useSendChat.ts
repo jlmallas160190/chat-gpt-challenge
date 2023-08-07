@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { useContext, useEffect, useState } from 'react';
 
 import { IChatFormValues } from '@/components/organisms/ChatCompletetionForm/ChatCompletetionForm.types';
@@ -80,7 +79,7 @@ const useSendChat = () => {
       const chatHistoryNew: IChatHistory = {
         id: response.id,
         title,
-        createdAt: moment().local().startOf('day').fromNow(),
+        createdAt: new Date(),
         conversations: messages,
       };
       onSelectChatHistory(chatHistoryNew);

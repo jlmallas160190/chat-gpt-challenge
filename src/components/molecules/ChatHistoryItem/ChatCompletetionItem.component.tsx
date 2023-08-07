@@ -1,3 +1,5 @@
+import moment from 'moment';
+import 'moment/locale/es';
 import { useContext, useState } from 'react';
 
 import CloseIcon from '@/assets/icons/commons/close.svg';
@@ -51,7 +53,6 @@ const ChatHistoryItem = ({ chatHistory }: ChatHistoryItemProps) => {
     onSelectChatHistory(chatHistory);
     setConfirmEdit(false);
   };
-
   return (
     <div className="flex flex-row mb-4 items-center w-full p-4 gap-2.5 hover:bg-[#FFEDD5] ">
       <Button
@@ -68,7 +69,9 @@ const ChatHistoryItem = ({ chatHistory }: ChatHistoryItemProps) => {
         </Typography>
         <div className="flex flex-row gap-2">
           <img src={HourIcon} />
-          <Typography className="text-xs text-slate-400">{chatHistory.createdAt}</Typography>
+          <Typography className="text-xs text-slate-400">
+            {chatHistory.createdAt ? moment(chatHistory.createdAt).locale('es').fromNow() : ''}
+          </Typography>
         </div>
       </div>
 
