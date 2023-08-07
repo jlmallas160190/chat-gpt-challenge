@@ -11,6 +11,7 @@ import Button from '@/components/atoms/Button/Button.component';
 import Typography from '@/components/atoms/Typography/Typography.component';
 import { ChatHistoryContext } from '@/contexts/chatHistoryContext';
 import { IChatHistory } from '@/types/chatCompletetion.types';
+import { overflowText } from '@/utils/formatters/strings';
 
 type ChatHistoryItemProps = {
   chatHistory: IChatHistory;
@@ -65,7 +66,7 @@ const ChatHistoryItem = ({ chatHistory }: ChatHistoryItemProps) => {
 
       <div className="flex flex-col w-full justify-items-start">
         <Typography className="font-medium leading-normal text-[#1E293B]">
-          {chatHistory.title}
+          {overflowText(chatHistory.title || '')}
         </Typography>
         <div className="flex flex-row gap-2">
           <img src={HourIcon} />
