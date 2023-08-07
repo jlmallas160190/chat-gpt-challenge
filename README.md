@@ -1,27 +1,74 @@
-# React + TypeScript + Vite
+# About the project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chat Gpt Challenge allows users to ask chatgpt about any topic and it is responsible for answering.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+# Node installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Install nvm:
 
-- Configure the top-level `parserOptions` property like this:
+- `https://github.com/nvm-sh/nvm`
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+
+# Atomic design
+
+The following is the suggested structure to successfully build the react project in src:
+
+```
+src/                        # source project
+├── components/
+    ├── atoms                   # common components
+    ├── molecules               # join atoms
+    ├── organisms               # section of a template
+    ├── templates               # structure of a page
+├── layouts                 # backoffice layouts
+├── pages                   # backoffice pages
+├── routes
+├── constants
+├── hooks                   # react functions
+├── contexts                # react contexts
+├── schemas                 # yup validation form
+├── services                # functions to call endpoints
+├── i18n                    # internationalization using react-intl
+└── ...
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Project Setup
+
+In the following steps we will cover some basic stuff to setup a development environment for chat-gpt-challenge.
+
+### Building the Project for Development Environment
+
+1. Clone the repository using the following command:
+
+```
+$ git clone https://github.com/jlmallas160190/chat-gpt-challenge.git
+```
+
+2. Positioned in the root folder execute:
+
+3. Run the follow command to use the node version for the project.
+
+```
+nvm use
+```
+
+4. Install dependencies
+
+```
+yarn install
+```
+
+5. Install husky
+
+```
+npx husky-init && yarn
+```
+
+6. Create .env file from .env.example
+7. Run project
+
+```
+yarn dev
+```
