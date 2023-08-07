@@ -35,7 +35,7 @@ const ChatHistorySearch = () => {
      gap-2.5 rounded border-[1.5px] border-solid border-slate-300"
       >
         <InputText
-          placeholder="Insertar promt"
+          placeholder="Insertar prompt"
           control={control}
           className="text-base font-medium w-full outline-0 leading-6 disabled:opacity-75"
           name="search"

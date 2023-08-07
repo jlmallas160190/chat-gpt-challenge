@@ -8,3 +8,9 @@ export interface IConversation {
   user: IMessage;
   assistant: IMessage;
 }
+
+export interface IChatHistory {
+  title: string;
+  createdAt: string;
+  conversation: IConversation;
+}

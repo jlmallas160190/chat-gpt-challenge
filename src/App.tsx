@@ -4,7 +4,7 @@ import './App.css';
 import MainLayout from './layouts/MainLayout/MainLayout.component';
 const App = () => (
   <Routes>
-    <Route path="/" element={<MainLayout />} />
+    <Route path="*" element={<MainLayout />} />
   </Routes>
 );
 
