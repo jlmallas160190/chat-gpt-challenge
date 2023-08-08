@@ -28,7 +28,7 @@ const ChatHistorySearch = () => {
         {formatMessage({
           id: 'chatHistorySearch.subtitle',
           defaultMessage:
-            'Para conseguir una respuesta adecuada a tus necesidades, escribe un promt en el sistema.',
+            'Para conseguir una respuesta adecuada a tus necesidades, escribe un prompt en el sistema.',
         })}
       </Typography>
       <div

@@ -92,9 +92,7 @@ const ChatHistoryItem = ({ chatHistory }: ChatHistoryItemProps) => {
           <img width={40} height={40} src={CloseIcon} />
         </Button>
       </div>
-      <div
-        className={`flex flex-row  gap-2 ${confirmDelete || confirmEdit ? 'invisible' : 'visible'}`}
-      >
+      <div className={`flex ${confirmDelete || confirmEdit ? 'invisible' : 'visible'}`}>
         <Button handleClick={onConfirmDelete}>
           <img width={40} height={40} src={TrashIcon} />
         </Button>

@@ -36,14 +36,14 @@ const ChatCompletetionForm = ({ onSubmit, loading }: ChatCompletionFormProps) =>
 
   return (
     <div
-      className={`flex flex-row items-center w-full p-4 h-[40px]
+      className={`flex flex-row items-center w-full  p-2 h-[40px]
      gap-2.5 rounded border-[1.5px] border-solid  ${
        errors.content ? 'border-red-500' : 'border-slate-300'
      }`}
     >
       <InputText
         control={control}
-        className="text-base font-medium w-full outline-0 leading-6 disabled:opacity-75"
+        className="text-base bg-inherit font-medium w-full outline-0 leading-6 disabled:opacity-75"
         name="content"
         disabled={loading}
       />

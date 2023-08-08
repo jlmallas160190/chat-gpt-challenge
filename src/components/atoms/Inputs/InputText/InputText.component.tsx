@@ -7,13 +7,13 @@ const InputText = (props: IInputTextProps) => {
   return (
     <Controller
       control={control}
-      defaultValue="ssss"
+      defaultValue=""
       name={name}
       rules={{ required }}
       render={({ field: { onChange, onBlur, value } }) => (
         <input
           onChange={onChange}
-          className={className}
+          className={`font-aluxion ${className}`}
           ref={ref}
           disabled={disabled}
           type={inputType}
