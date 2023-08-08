@@ -7,7 +7,7 @@ type ChatHistoryListProps = {
 };
 const ChatHistoryList = ({ chatHistories }: ChatHistoryListProps) => {
   return (
-    <div className="flex flex-col w-full bg-white items-center rounded-md min-h-[400px] grow">
+    <div className="flex flex-col w-full bg-white items-center overflow-auto rounded-md max-h-[500px] grow">
       <div className="border-b border-solid border-[#CBD5E1] w-full p-4">
         <Typography className="text-justify font-semibold">Historial de búsquedas</Typography>
       </div>

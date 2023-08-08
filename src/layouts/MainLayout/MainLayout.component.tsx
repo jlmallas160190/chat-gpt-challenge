@@ -38,7 +38,7 @@ function MainLayout() {
           </button>
         </div>
       </div>
-      <div className="flex mobile:flex-col mobile:items-center  mobile:gap-2 p-4 bg-[#F8FAFC]">
+      <div className="flex mobile:flex-col mobile:items-center mobile:gap-2 p-4 bg-[#F8FAFC]">
         <div
           className={`px-4 flex flex-col justify-start items-center mobile:w-full
        data-te-collapse-item transition-all ${
@@ -52,7 +52,7 @@ function MainLayout() {
           className={`flex flex-wrap grow bg-slate-50  rounded-lg border mobile:w-full ${
             hidden ? 'w-full' : 'w-9/12  mobile:w-full '
           }
-       border-solid border-gray-300 content-between min-h-[600px] grow`}
+       border-solid border-gray-300 content-between overflow-auto max-h-[750px] grow`}
         >
           <BaseRoutes routes={routes}></BaseRoutes>
         </div>
