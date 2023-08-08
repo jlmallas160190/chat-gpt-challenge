@@ -36,9 +36,10 @@ const useSendChat = () => {
   const onResetConversation = () => {
     setConversations([]);
     if (chatHistories && chatHistories.length > 0) {
-      setIndex(index + 1);
+      setIndex(chatHistories.length);
     }
   };
+
   const onSubmit = async (values: IChatFormValues) => {
     setLoading(true);
     try {
@@ -68,7 +69,7 @@ const useSendChat = () => {
           : [];
       setConversations([...conversations, ...messages]);
 
-      if (chatHistories && chatHistories.length == index + 1) {
+      if (chatHistories && chatHistories.length >= index + 1) {
         const chatHistoryEdit = chatHistories[index];
         const { conversations } = chatHistoryEdit;
         if (conversations) {
@@ -89,7 +90,7 @@ const useSendChat = () => {
       setLoading(false);
     } catch {
       throw new Error(
-        'Ha ocurrido un error al enviar la consulta. Porfavor consulte con el administrador.',
+        'Ha ocurrido un error al enviar la consulta. Por favor consulte con el administrador.',
       );
     } finally {
       setLoading(false);

@@ -19,7 +19,7 @@ type ChatHistoryItemProps = {
 const ChatHistoryItem = ({ chatHistory }: ChatHistoryItemProps) => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [confirmEdit, setConfirmEdit] = useState(false);
-  const { setChatHistories, onSelectChatHistory, chatHistories, chatHistorySelected } =
+  const { setChatHistories, onSelectChatHistory, chatHistories, chatHistorySelected, setIndex } =
     useContext(ChatHistoryContext);
 
   const onConfirmDelete = () => {
@@ -40,6 +40,7 @@ const ChatHistoryItem = ({ chatHistory }: ChatHistoryItemProps) => {
       }
       histories.splice(index, 1);
       setChatHistories(histories);
+      setIndex(histories.length);
     }
     setConfirmDelete(false);
   };
@@ -52,6 +53,8 @@ const ChatHistoryItem = ({ chatHistory }: ChatHistoryItemProps) => {
 
   const onConfirmEditOk = () => {
     onSelectChatHistory(chatHistory);
+    const index = chatHistories.findIndex((item) => item.id === chatHistory.id);
+    setIndex(index);
     setConfirmEdit(false);
   };
   return (

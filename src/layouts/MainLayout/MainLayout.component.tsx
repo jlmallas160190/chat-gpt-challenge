@@ -52,7 +52,7 @@ function MainLayout() {
           className={`flex flex-wrap grow bg-slate-50  rounded-lg border mobile:w-full ${
             hidden ? 'w-full' : 'w-9/12  mobile:w-full '
           }
-       border-solid border-gray-300 content-between overflow-auto min-h-[500px] max-h-[750px] grow`}
+       border-solid border-gray-300 content-between overflow-auto min-h-[750px] max-h-[750px] grow`}
         >
           <BaseRoutes routes={routes}></BaseRoutes>
         </div>
